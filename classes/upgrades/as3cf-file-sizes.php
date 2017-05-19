@@ -117,7 +117,10 @@ class AS3CF_Upgrade_File_Sizes extends AS3CF_Upgrade {
 
 		if ( 0 === $file_size_total ) {
 			AS3CF_Error::log( 'Total file size for the attachment is 0: ' . $attachment->ID );
-			$this->error_count ++;
+
+			$as3cf->delete_attachment($attachment->ID);
+
+			//$this->error_count ++;
 
 			return false;
 		}
